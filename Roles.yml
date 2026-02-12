@@ -1,0 +1,8 @@
+- name: HOA 6.1 Ansible Roles
+  hosts: all
+  become: yes
+  
+  roles:
+    - Web_servers
+    - Database_servers
+    - File_servers
