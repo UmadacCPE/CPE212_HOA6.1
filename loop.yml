@@ -1,0 +1,23 @@
+- hosts: all
+  tasks:
+    - name: looping / creating multiple directories
+      file:
+        path: $HOME/{{ item }}
+        state: directory
+      loop:
+        - test_directory1
+        - test_directory2
+        - test_directory3
+      become: true
+    - name: creating file
+      file:
+        path: $HOME/file.txt
+        state: touch
+      become: true
+    - name: change directory permissions
+      file:
+          path: $HOME/test_directory1
+          state: directory
+          owner: root
+          group: root
+          mode: 0755

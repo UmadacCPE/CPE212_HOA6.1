@@ -1,0 +1,18 @@
+- hosts: all
+  tasks:
+    - name: creating a file
+      tags: file
+      file:
+        path: $HOME/new.py
+        state: touch
+
+    - name: create test_directory
+      file:
+        path: $HOME/test_directory
+        state: directory
+    - name: change permissions
+      file:
+        path: "/home/{{ ansible_user }}/test_directory"
+        owner: root
+        group: root
+        mode: 0777
